@@ -1,7 +1,7 @@
-# EcoHarmonyPark_Project_G4
+# 🏞️EcoHarmonyPark_Project_G4🌳
 Repositorio dedicado a gestionar el ciclo de vida del producto de software para el bioparque "EcoHarmony Park".
 
-## Integrantes del equipo
+## 🔆Integrantes del equipo
 | Integrante                     | Legajo |
 |--------------------------------|--------|
 | Barbera, Juan Salvador         | 86657  |
@@ -13,7 +13,7 @@ Repositorio dedicado a gestionar el ciclo de vida del producto de software para 
 | Gomez, Luciano                 | 89058  |
 | Sosa, Diego                    | 82397  |
 
-## Instalación
+## 🔆Instalación
 ```bash
 git clone https://github.com/nicoranalli/EcoHarmonyPark_Project_G4.git
 cd EcoHarmonyPark_Project_G4
@@ -24,11 +24,11 @@ cd EcoHarmonyPark_Project_G4
 git pull origin NombreRamaRemota NombreRamaLocal  --Pullea la rama remota en una rama local
 git checkout NombreRamaLocal --Me traslado a la rama local recien pulleada
 ```
-## Criterio Linea Base
+## 🔆Criterio Linea Base
 Como equipo de desarrollo hemos decidido definir como *Linea Base* al momento en el cual se ha realizado la entrega y corrección del TP-6: REQUERIMIENTOS ÁGILES - Implementación de User Stories. Esto se debe a que será el punto en el cual contaremos con los *Items de Configuración* necesarios para mantener la trazabilidad e integridad del producto de software que estamos construyendo para el bioparque "EcoHarmony Park".
 Las lineas bases se identificaran con una Tag que indicará que dicha rama representará una *Configuración* estable.
 
-## Items De Configuracion
+## 🔆Items De Configuracion
 | Listado de Items de Configuración    | Regla de Nombrado                                                                           | Ubicación Física                                                                                                                           |
 |--------------------------------------|---------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | User Story                    | S&lt;X&gt;_US_&lt;X&gt;_&lt;TEMA&gt;.PDF                          | https://github.com/nicoranalli/EcoHarmonyPark_Project_G4.git/Producto/1-Requerimientos/Documentacion                                                         |
@@ -43,7 +43,7 @@ Las lineas bases se identificaran con una Tag que indicará que dicha rama repre
 | Estructura Equipo | Equipo_&lt;DDMMMYYYY&gt;.pdf                                        | https://github.com/nicoranalli/EcoHarmonyPark_Project_G4.git/Proyecto            |
 | Codigo | Tipo_Entidad.ext                                        | https://github.com/nicoranalli/EcoHarmonyPark_Project_G4.git/Producto/4-Implementacion/Codigo            |
 
-## Glosario
+## 🔆Glosario
 | Sigla                                      | Significado                                                                                                                                                                                          |
 |--------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | &lt;DDMMMYYYY&gt;                          | Fecha en formato día-mes-año en valores numéricos                                                                                                                                                    |
@@ -65,9 +65,9 @@ Las lineas bases se identificaran con una Tag que indicará que dicha rama repre
 | Entidad                                    | En el Código, indica de que entidad se trata dicha pieza de código - Entiendase por entidad al ámbito, área o parte del dominio sobre el cual se está trabajando                                     |
 | .ext                                       | Indica el tipo de archivo - pdf, xlsx, js, ts, etc                                                                                                                                                   |
 
-### Reglas de nombrado
+### ®️Reglas de nombrado
 En reglas generales, siempre se usará PascalCase para nombrar a las carpetas y a los items de configuración. Además, siemrpe que se pueda, usaremos palabras en Español. De manera particular se exigirá la cumplimentación de las siguientes reglas:
-#### Commits
+#### ⬆️Commits
 Para los commits hemos decidido utilizar la siguiente nomenclatura: "Prefijo1/DescripciónAcción1_Prefijo2/DescripciónAcción2_..._PrefijoN/DescripciónAcciónN"
 - El prefijo hace referencia a las siguientes posibles acciones que se pueden realizar con respecto a items de configuración
   - Add: Agregar un nuevo item de configuración.
@@ -82,11 +82,11 @@ Para los commits hemos decidido utilizar la siguiente nomenclatura: "Prefijo1/De
 La idea de esta nomenclatura es tener commits limpios y legibles, en los cuales rapidamente se pueda saber que se hizo sin necesidad de tener que adentrarse en los cambios.
 La forma de utilizar la regla de nombrado sería: Por ejemplo en un commit hicimos dos acciones *"Add"* y *"Fix"* sobre un mismo o varios items de configuración, el nombre del commit sería: *"Add/Pantalla tramites_Fix/Error de tipeo en la US1"*
 
-#### Branches
+#### 🌿Branches
 Para las ramas, debido a que vamos a trabajar en base a una o varias US y TPs, hemos decidido seguir la siguiente nomenclatura: "USX_TPX".
 Donde *USX* se refiere a la User Story sobre la que estamos trabajando y *TPX* hace referencia al Trabajo practico sobre el que se desarrolla dicha actividad.
 
-## Estructura del repositorio
+## 🔆Estructura del repositorio
 ```
 └── EcoHarmonyPark_Project_G4
     ├── Producto/                                                 
@@ -98,8 +98,9 @@ Donde *USX* se refiere a la User Story sobre la que estamos trabajando y *TPX* h
     |   ├── 3_Diseño/
     |   |
     |   ├── 4_Implementacion/
-    |   |   ├── Cronograma.txt
-    |   |   └── PokerPlanningCards.pdf
+    |   |   ├── Codigo
+    |   |   ├── Datos
+    |   |   └── Documentacion
     |   |
     |   ├── 5_Prueba/
     |   |   └── Documentacion
@@ -113,11 +114,23 @@ Donde *USX* se refiere a la User Story sobre la que estamos trabajando y *TPX* h
     |   |   └── Releases/
     |   |       └── ReleaseX/
     |   |
-    |   └── 2_MonitoreoYControl/
-    |       ├── MinutasReuniones/
-    |       └── Reportes/
+    |   ├── 2_MonitoreoYControl/
+    |   |    ├── MinutasReuniones/
+    |   |    └── Reportes/
+    |   |
+    |   └── Equipo_<DDMMYYYY>.pdf
     |
-    ├── Equipo_<DDMMYYYY>.pdf
     └── README.md
 ```
-*Explicar estructura*
+### 📃Descripción de la estructura
+Contamos con dos grandes directorios Producto y Proyecto. Tanto en *Producto* como en *Proyecto* encontraremos toda la configuración correspondiente al desarrollo del producto que estamos construyendo para el bioparque "EcoHarmony Park", solo que en la primera encontraremos items orientados al desarrollo del producto y en la segunda items orientados a la gestion misma del proyecto.
+#### ⚙️Producto
+Este directorio se divide en 6 carpetas, una por cada actividad en el desarrollo del producto de software que estamos llevando a cabo. Todas las carpetas comparten una carpeta con documentación asociada o generada en la etapa, pero pueden contar con otras propias de la actividad. Por ejemplo, la carpeta *4_Implementacion* cuenta con el directorio *Codigo* Donde encontraremos toda la estructura del codigo fuente sobre el que se construye el producto, o también la carpeta *Datos* que contendrá los mockups, o bases de datos locales para pruebas.
+
+#### 💡Proyecto
+Este directorio consta de 2 carpetas y un documento. En la carpeta *1_Planificación* encontraremos todos los items de configuración referidos a las tareas de gestion de los sprints y releases. Esta se encuentra sujeta a cambios debido a que todavía no tenemos bien definido el marco de trabajo a seguir.
+Luego, en la carpeta *2_MonitoreoYControl* encontraremos toda la configuración necesaria para gestionar los reportes, estadisticas y reclamos de la aplicación que estamos construyendo.
+Finalmente, contamos con un documento *Equipo_<DDMMYYYY>.pdf*, en el cual encontraremos información sobre el equipo de trabajo a lo largo del desarrollo del proyecto. La idea es que funcione como un historico sobre como se fue organizando el equipo a medida que fue trabajando a lo largo del proyecto. Por ejemplo, que roles ocupó cada integrante, cuales fueron sus tareas, sus desafíos y aprendizajes, entre otros factores.
+  
+  
+
