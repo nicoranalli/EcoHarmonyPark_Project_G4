@@ -1,7 +1,7 @@
 # 🏞️EcoHarmonyPark_Project_G4🌳
 Repositorio dedicado a gestionar el ciclo de vida del producto de software para el bioparque "EcoHarmony Park".
 
-## 🔆Integrantes del equipo
+## 🔆Integrantes del equipo🔆
 | Integrante                     | Legajo |
 |--------------------------------|--------|
 | Barbera, Juan Salvador         | 86657  |
@@ -13,7 +13,7 @@ Repositorio dedicado a gestionar el ciclo de vida del producto de software para 
 | Gomez, Luciano                 | 89058  |
 | Sosa, Diego                    | 82397  |
 
-## 🔆Instalación
+## 🔆Instalación🔆
 ```bash
 git clone https://github.com/nicoranalli/EcoHarmonyPark_Project_G4.git
 cd EcoHarmonyPark_Project_G4
@@ -24,11 +24,11 @@ cd EcoHarmonyPark_Project_G4
 git pull origin NombreRamaRemota NombreRamaLocal  --Pullea la rama remota en una rama local
 git checkout NombreRamaLocal --Me traslado a la rama local recien pulleada
 ```
-## 🔆Criterio Linea Base
+## 🔆Criterio Linea Base🔆
 Como equipo de desarrollo hemos decidido definir como *Linea Base* al momento en el cual se ha realizado la entrega y corrección del TP-6: REQUERIMIENTOS ÁGILES - Implementación de User Stories. Esto se debe a que será el punto en el cual contaremos con los *Items de Configuración* necesarios para mantener la trazabilidad e integridad del producto de software que estamos construyendo para el bioparque "EcoHarmony Park".
 Las lineas bases se identificaran con una Tag que indicará que dicha rama representará una *Configuración* estable.
 
-## 🔆Items De Configuracion
+## 🔆Items De Configuracion🔆
 | Listado de Items de Configuración    | Regla de Nombrado                                                                           | Ubicación Física                                                                                                                           |
 |--------------------------------------|---------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | User Story                    | S&lt;X&gt;_US_&lt;X&gt;_&lt;TEMA&gt;.PDF                          | https://github.com/nicoranalli/EcoHarmonyPark_Project_G4.git/Producto/1-Requerimientos/Documentacion                                                         |
@@ -43,7 +43,7 @@ Las lineas bases se identificaran con una Tag que indicará que dicha rama repre
 | Estructura Equipo | Equipo_&lt;DDMMMYYYY&gt;.pdf                                        | https://github.com/nicoranalli/EcoHarmonyPark_Project_G4.git/Proyecto            |
 | Codigo | Tipo_Entidad.ext                                        | https://github.com/nicoranalli/EcoHarmonyPark_Project_G4.git/Producto/4-Implementacion/Codigo            |
 
-## 🔆Glosario
+## 🔆Glosario🔆
 | Sigla                                      | Significado                                                                                                                                                                                          |
 |--------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | &lt;DDMMMYYYY&gt;                          | Fecha en formato día-mes-año en valores numéricos                                                                                                                                                    |
@@ -86,7 +86,7 @@ La forma de utilizar la regla de nombrado sería: Por ejemplo en un commit hicim
 Para las ramas, debido a que vamos a trabajar en base a una o varias US y TPs, hemos decidido seguir la siguiente nomenclatura: "USX_TPX".
 Donde *USX* se refiere a la User Story sobre la que estamos trabajando y *TPX* hace referencia al Trabajo practico sobre el que se desarrolla dicha actividad.
 
-## 🔆Estructura del repositorio
+## 🔆Estructura del repositorio🔆
 ```
 └── EcoHarmonyPark_Project_G4
     ├── Producto/                                                 
