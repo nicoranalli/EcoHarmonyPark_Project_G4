@@ -23,6 +23,12 @@ cd EcoHarmonyPark_Project_G4
 ------> COMO PULLEAR UNA RAMA:
 git pull origin NombreRamaRemota NombreRamaLocal  --Pullea la rama remota en una rama local
 git checkout NombreRamaLocal --Me traslado a la rama local recien pulleada
+
+ó
+git checkout -b nombreRama origin/nombreRama
+
+------> CUANDO SE PULLEA AL TRABAJAR CON EL CÓDIGO :
+- ejecutar en la terminal: npm install  --Instala todas las dependencias.
 ```
 ## 🔆Criterio Linea Base🔆
 Como equipo de desarrollo hemos decidido definir como *Linea Base* al momento en el cual se ha realizado la entrega y corrección del TP-6: REQUERIMIENTOS ÁGILES - Implementación de User Stories. Esto se debe a que será el punto en el cual contaremos con los *Items de Configuración* necesarios para mantener la trazabilidad e integridad del producto de software que estamos construyendo para el bioparque "EcoHarmony Park".
