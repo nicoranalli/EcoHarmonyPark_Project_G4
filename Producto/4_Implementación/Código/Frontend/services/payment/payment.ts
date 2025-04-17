@@ -2,9 +2,7 @@
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Linking } from "react-native";
-
-const API_URL = 'http://192.168.0.237:4000/'; // Cambiar por tu IP local si usás un dispositivo real
-
+import { API_URL } from "@env"; // Cambiar por tu IP local si usás un dispositivo real
 
 export interface CreatePreferenceResponse {
   id: string;

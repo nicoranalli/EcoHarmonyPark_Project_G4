@@ -1,10 +1,10 @@
 
 
-const API_URL = 'http://192.168.0.237:4000/auth'; // Cambiar por tu IP local si usás un dispositivo real
+import { API_URL } from '@env' // Cambiar por tu IP local si usás un dispositivo real
 
 export const login = async (email: string, password: string) => {
   try {
-    const response = await fetch(`${API_URL}/login`, {
+    const response = await fetch(`${API_URL}auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
