@@ -3,8 +3,8 @@ import {User} from '../models/models';
 export const users: User[] = [
       {
         id: 1,
-        name: 'Nicolás',
-        email: 'nico@mail.com',
+        name: 'nico',
+        email: 'nicoranalli9@gmail.com',
         password: '123456',
       },
       {

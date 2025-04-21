@@ -1,88 +1,176 @@
 import { users } from '../data/users';
-import { User, Ticket } from '../models/models';
+import { Ticket, Tickets, User} from '../models/models';
+import { tickets } from '../data/tickets';
 import { Request, Response } from 'express';
+import { v4 as uuidv4 } from 'uuid';
+import QRCode from 'qrcode';
+import nodemailer from 'nodemailer';
 
-// Simulación de parque abierto (ej: lunes a sábado)
-const diasAbiertos = [1, 2, 3, 4, 5, 6];
+const ticketsList = tickets;
 
-export const createTicket = (req: Request, res: Response) => {
-    const { visitDate, numberOfTickets, passType, paymentMethod, visitorAges } =
-        req.body;
+export const createTicket = async (req: Request, res: Response) => {
+  const { tickets: incomingTickets, date, total, method } = req.body;
+  const userId = req.user.id;
+  const mail = req.user.email;
 
-    const userId = req.user.id;
+  console.log('User ID:', userId);
+  if (!incomingTickets || !Array.isArray(incomingTickets)) {
+     res.status(400).json({ error: 'Tickets inválidos.' });
+     return
+  }
 
-    if (!paymentMethod){
-        res
-        .status(400)
-        .json({ error: "Debes seleccionar una forma de pago" });
-        return
+  try {
+    const generatedTickets: Ticket[] = incomingTickets.map((ticket) => ({
+      ...ticket,
+      id: uuidv4().slice(0, 8), // Genera un ID único para cada ticket
+      date,
+      used: false,
+    }));
+
+    const operationId = uuidv4().slice(0, 8)
+    const qrData = `http://192.168.100.79:4000/tickets/verify-ticket/${operationId}`;
+    const qrCode = await QRCode.toDataURL(qrData);
+
+    const user = users.find((u) => u.id === userId);
+
+    const newOperation: Tickets = {
+      idOperation: operationId,
+      tickets: generatedTickets,
+      total,
+      userId,
+      date: new Date(date),
+      qrCode,
+      paymentMethod: method,
+      usedOperation: false,
+    };
+
+    ticketsList.push(newOperation);
+
+    if (!user) {
+       res.status(404).json({ error: 'Usuario no encontrado' });
+       return
     }
 
-    if (numberOfTickets > 10){
-        res
-            .status(400)
-            .json({ error: "No puedes comprar más de 10 entradas" });
-        return
-    }
-
-    const fecha = new Date(visitDate);
-    const hoy = new Date();
-    if (fecha.getTime() < hoy.setHours(0, 0, 0, 0)) {
-         res.status(400).json({ error: "La fecha debe ser hoy o futura" });
-         return
-    }
-
-    if (!diasAbiertos.includes(fecha.getDay())) {
-         res.status(400).json({ error: "El parque está cerrado ese día" });
-         return
-    }
 
 
-    /*
-    try {
-     
-      const user = users.find((user) => user.id === userId);
-  
-      if (paymentMethod === "TARJETA") {
-        // Simular redirección a MercadoPago
-        return res.status(200).json({
-          message: "Redirigiendo a MercadoPago...",
-          redirect: "https://www.mercadopago.com.ar",
-        },
-        });
-      }
-  */
-
-    /* ENVIAMOS EL MAIL CON NODEMAILER
-    // Enviar correo de confirmación
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: 'nicoranalli9@gmail.com',
+        pass: 'flcw gbka qpqa vmbq',
       },
     });
 
+    var htmlPreview = ''
+    console.log(method)
+    if (method === 'cash'){
+       htmlPreview = `
+        <h3>¡Gracias por tu reserva!, ${user.name}!</h3>
+        <p>Has reservado ${generatedTickets.length} entradas para el día <strong>${new Date(date).toLocaleDateString()}</strong>.</p>
+        <p>Deberas asistir a boletería el dia elegido, y retirar tus entradas pagando en efectivo</p>
+        <p>El total a pagar es: $${total}</p>
+        <p>TE ESPERAMOS!!</p>
+       <p> Código de operación: ${operationId}</p>
+       <p> Método de pago: Efectivo</p>
+      `
+    }else {
+     htmlPreview =  `
+        <h3>¡Gracias por tu compra, ${user.name}!</h3>
+        <p>Has comprado ${generatedTickets.length} entradas para el día <strong>${new Date(date).toLocaleDateString()}</strong>.</p>
+        <p>El siguiente código QR te habilita a ingresar al parque el día elegiod</p>
+       <img src="cid:qrimage" />
+       <p> Código de operación: ${operationId}</p>
+      `
+    }
+
     await transporter.sendMail({
-      from: '"Parque Aventura" <noreply@parque.com>',
-      to: user.email,
-      subject: "Compra de entradas confirmada",
-      text: `Has comprado ${numberOfTickets} entradas para el día ${visitDate}. ¡Gracias por tu compra!`,
+      from: '"EcoHarmony Park" <noreply@parque.com>',
+      to: 'nicoranalli9@gmail.com',
+      subject: 'Compra de entradas confirmada',
+      html: htmlPreview,
+      attachments: [
+        {
+          filename: 'qr.png',
+          content: qrCode.split("base64,")[1],
+          encoding: 'base64',
+          cid: 'qrimage', // ID usado en el src="cid:qrimage"
+        },
+      ],
     });
 
-    ticket.emailSent = true;
-    await ticket.save();
-
-    res.status(201).json({
-      message: `Compra exitosa: ${numberOfTickets} entradas para ${visitDate}`,
-      ticket,
+     res.status(201).json({
+      message: 'Compra realizada con éxito',
+      tickets: generatedTickets,
+      qrCode,
     });
-
-    
+    return
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Error en el servidor" });
-    
+     res.status(500).json();
+     return
   }
-    */
+};
+
+
+export const verifyTicket = async (req: Request, res: Response) => {
+
+  console.log('Verifying ticket...');
+  const ticketId = req.params.id;
+
+  let foundTicket: Tickets | undefined;
+
+    const operationId = ticketsList.find((t) => t.idOperation.toString() === ticketId);
+
+    if (operationId) {
+      foundTicket = operationId;
+    }
+  
+
+  if (!foundTicket) {
+     res.status(404).json({ valid: false, message: 'Ticket no encontrado' });
+     return
+  }
+
+  if (foundTicket.usedOperation) {
+     res.status(400).json({ valid: false, message: 'El ticket ya fue usado' });
+     return
+  }
+
+  // Podés validar la fecha también si querés
+
+  
+   res.status(200).json({
+    valid: true,
+    message: 'Ticket válido y marcado como usado',
+    ticket: foundTicket,
+  });
+  return
+};
+
+export const getTickets = async (req: Request, res: Response) => {
+
+  const userId = req.user.id;
+  const userTickets = ticketsList.filter((ticket) => ticket.userId === userId);
+
+  if (!userTickets) {
+     res.status(404).json({ error: 'No se encontraron tickets para este usuario' });
+     return
+  }
+
+
+   res.status(200).json({ tickets: userTickets });
+   return
+}
+
+export const getTicketById = async (req: Request, res: Response) => {
+  const ticketId = req.params.id;
+  const ticket = ticketsList.find((ticket) => ticket.idOperation === ticketId);
+
+  if (!ticket) {
+     res.status(404).json({ error: 'Ticket no encontrado' });
+     return
+  }
+
+   res.status(200).json({ ticket });
+   return
 }

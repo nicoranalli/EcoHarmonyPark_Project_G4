@@ -9,7 +9,6 @@ import { Request, Response } from 'express';
 export const createPreference = async (req: Request, res: Response) => {
 
 try {
-  console.log('Request body:', req.body);
 
   const { amount } = req.body;
 
@@ -20,7 +19,7 @@ try {
       items: [
         {
           id: '222222',
-          title: 'Pago de EcoHarmonyPark',
+          title: 'Entradas Eco-Harmony',
           unit_price: amount,
           quantity: 1,
         },

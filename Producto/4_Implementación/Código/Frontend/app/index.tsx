@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, SafeAreaView, TextInput, Image } from 'react-native';
 import React, { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { login } from '@/services/loginService';
+import { login } from '@/services/auth/loginService';
 import { Alert } from 'react-native';
 import { loginSchema } from '@/utils/schemas/appSchemas';
 import { useRouter } from 'expo-router';
@@ -20,7 +20,7 @@ export default function LoginScreen() {
 
 
   const [form, setForm] = useState<Form>({
-    email: 'nico@mail.com',
+    email: 'nicoranalli9@gmail.com',
     password: '123456',
   });
 
@@ -48,7 +48,7 @@ export default function LoginScreen() {
   };
   return (
 
-    <SafeAreaView style={{ backgroundColor: 'F6F1E8' }} className='flex-1 bg-white'>
+    <SafeAreaView style={{ backgroundColor: 'F6F1E8' }} className='flex-1 '>
 
       <Image
         source={require('../assets/images/logo-Photoroom.png')}

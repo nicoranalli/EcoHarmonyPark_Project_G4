@@ -1,6 +1,7 @@
 import { ActivityIndicator, SafeAreaView, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StyleSheet } from 'react-native';
+import colors from '../constants/colors'
 
 
 export default function Background({ children, loading = false }: {
@@ -11,7 +12,7 @@ export default function Background({ children, loading = false }: {
         
         <View style={styles.container}>
             <LinearGradient
-                colors={['#d9f99d', '#f7fee7', '#ffffff']}
+                colors={[colors.ligther, '#f7fee7', '#ffffff']}
                 style={styles.gradient}
                 start={{ x: 1, y: 1 }}
                 end={{ x: 0, y: 0 }}

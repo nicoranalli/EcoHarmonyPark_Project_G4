@@ -19,6 +19,52 @@ export default function TicketsLayout() {
         }}
       />
 
+      <Stack.Screen
+        name="paymentMethod"
+        options={{
+          title: 'Método de pago',
+          headerShown: true, // Mostrar header para esta pantalla
+          headerBackTitle: 'Atrás', // Texto del botón de retroceso
+        }}
+      />
+
+
+      <Stack.Screen
+        name="checkout"
+        options={{
+          title: 'Checkout',
+          headerShown: true, // Mostrar header para esta pantalla
+          headerBackTitle: 'Atrás', // Texto del botón de retroceso
+        }}
+      />
+
+     <Stack.Screen
+        name="paymentResult"
+        options={{
+          title: 'Resultado de compra',
+          headerShown: true, // Mostrar header para esta pantalla
+          headerBackTitle: 'Atrás', // Texto del botón de retroceso
+        }}
+      />
+      <Stack.Screen
+        name="ticketsHistory"
+        options={{
+          title: '',
+          headerShown: true, // Mostrar header para esta pantalla
+          headerBackTitle: 'Atrás', // Texto del botón de retroceso
+        }}
+      />
+      <Stack.Screen
+        name="ticketDetail"
+        options={{
+          title: 'Detalle de entrada',
+          headerShown: true, // Mostrar header para esta pantalla
+          headerBackTitle: 'Atrás', // Texto del botón de retroceso
+        }}
+      />
+
+   
+
 
     </Stack>
   );

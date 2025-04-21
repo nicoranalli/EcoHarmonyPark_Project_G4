@@ -23,7 +23,7 @@ export default function TicketsScreen() {
 
           <TouchableOpacity
             onPress={() => router.push('/(tabs)/tickets/form')}
-            className="bg-lime-600 p-5 rounded-2xl items-center shadow-md">
+            className="bg-primary p-5 rounded-2xl items-center shadow-md">
 
             <MaterialCommunityIcons name="ticket-confirmation" size={32} color="white" />
 
@@ -33,8 +33,8 @@ export default function TicketsScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => console.log('Botón de prueba presionado')}
-            className="bg-lime-600 p-5 rounded-2xl items-center shadow-md mt-8">
+            onPress={() => router.push('/(tabs)/tickets/ticketsHistory')}
+            className="bg-primary p-5 rounded-2xl items-center shadow-md mt-8">
 
             <MaterialCommunityIcons name="ticket-account" size={32} color="white" />
 
