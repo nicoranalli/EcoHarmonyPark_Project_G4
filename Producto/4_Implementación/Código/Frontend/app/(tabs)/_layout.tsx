@@ -19,7 +19,7 @@ export default function TabsLayout() {
 
                     headerStyle: { backgroundColor: '#65a30d' },
 
-                    tabBarLabelStyle: { fontSize: 12 }, // 🔥 cambia el color del texto
+                    tabBarLabelStyle: { fontSize: 12 , fontFamily: 'Montserrat', }, // 🔥 cambia el color del texto
 
                     // el color lo manejás con tabBarActive/InactiveTintColor
                     tabBarActiveTintColor: colors.primary,
@@ -33,7 +33,9 @@ export default function TabsLayout() {
                     title: 'Actividades',
                     headerStyle: { backgroundColor: '#65a30d' },
                     // el texto del tabbar (abajo)
-                    tabBarLabelStyle: { fontSize: 12 }, // 🔥 cambia el color del texto
+                    tabBarLabelStyle: { fontSize: 12, 
+                        fontFamily: 'Montserrat', // 🔥 cambia el color del texto
+                    }, // 🔥 cambia el color del texto
 
                     // el color lo manejás con tabBarActive/InactiveTintColor
                     tabBarActiveTintColor: colors.primary,
@@ -48,7 +50,7 @@ export default function TabsLayout() {
                     headerStyle: { backgroundColor: '#65a30d' },
 
                     // el texto del tabbar (abajo)
-                    tabBarLabelStyle: { fontSize: 12 }, // 🔥 cambia el color del texto
+                    tabBarLabelStyle: { fontSize: 12,   fontFamily: 'Montserrat', }, // 🔥 cambia el color del texto
 
                     // el color lo manejás con tabBarActive/InactiveTintColor
                     tabBarActiveTintColor: colors.primary,

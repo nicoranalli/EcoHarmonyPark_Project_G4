@@ -10,7 +10,7 @@ export default function actividadesScreen() {
 
                     <View className="p-6 grow shrink basis-0  ">
 
-                        <Text className="text-xl font-bold">Bienvenido a la pantalla Actividades 🎉</Text>
+                        <Text className="font-montserrat text-xl font-bold">Bienvenido a la pantalla Actividades 🎉</Text>
 
                     </View>
                 </View>

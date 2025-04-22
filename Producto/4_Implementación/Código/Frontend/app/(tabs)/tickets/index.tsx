@@ -12,8 +12,8 @@ export default function TicketsScreen() {
       <SafeAreaView className="flex-1 ">
 
         <View className="p-5 pt-5 rounded-b-3xl shadow-md">
-          <Text className='text-4xl font-bold text-center mt-2 '>Gestión de Entradas</Text>
-          <Text className=' mt-2 text-center text-gray-600'>¿Que quieres hacer?</Text>
+          <Text className='font-montserrat text-4xl font-bold text-center mt-2 '>Gestión de Entradas</Text>
+          <Text className=' font-montserrat  mt-2 text-center text-gray-600'>¿Que quieres hacer?</Text>
 
 
         </View>
@@ -27,8 +27,8 @@ export default function TicketsScreen() {
 
             <MaterialCommunityIcons name="ticket-confirmation" size={32} color="white" />
 
-            <Text className='text-white font-bold text-2xl mt-2'>Comprar entradas</Text>
-            <Text className='text-gray-50 font-light text-md mt-1'>Adquirí aca tu pase para el parque!</Text>
+            <Text className='text-white font-bold text-2xl mt-2 font-montserrat '>Comprar entradas</Text>
+            <Text className='text-gray-50 font-light text-md mt-1 font-montserrat'>Adquirí aca tu pase para el parque!</Text>
 
           </TouchableOpacity>
 
@@ -38,8 +38,8 @@ export default function TicketsScreen() {
 
             <MaterialCommunityIcons name="ticket-account" size={32} color="white" />
 
-            <Text className='text-white font-bold text-2xl mt-2'>Mis entradas</Text>
-            <Text className='text-gray-50 font-light text-md mt-1'>Revisa tus entradas adquiridas</Text>
+            <Text className='text-white font-bold text-2xl mt-2 font-montserrat'>Mis entradas</Text>
+            <Text className='text-gray-50 font-light text-md mt-1 font-montserrat'>Revisa tus entradas adquiridas</Text>
           </TouchableOpacity>
         </View>
 

@@ -13,6 +13,11 @@ module.exports = {
         ligther: '#ECF39E'
         // etc.
       },
+      fontFamily: {
+        montserrat: ['Montserrat'],
+        montserratsemi: ['MontserratSemiBold'],
+        montserratbold: ['MontserratBold'],
+      },
     },
   },
   plugins: [],

@@ -18,7 +18,7 @@ export default function BookingForm() {
   const { tickets, setTickets, date, setDate, total, setTotal } = useTicket();
 
   const [showDatePicker, setShowDatePicker] = useState(false);
-  
+
   const [ticketCount, setTicketCount] = useState(1);
 
   useEffect(() => {
@@ -55,12 +55,12 @@ export default function BookingForm() {
       // Verificar si el día es martes (1) o jueves (3)
       // Los días en JS: 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
       const dayOfWeek = selectedDate.getDay();
-      
+
       if (dayOfWeek === 2 || dayOfWeek === 4) { // Martes (2) o Jueves (4)
         alert('No se permiten reservas los días martes y jueves');
         return;
       }
-      
+
       setDate(selectedDate);
     }
   };
@@ -79,7 +79,8 @@ export default function BookingForm() {
         type: 'Regular',
         esJubilado: false,
         amount: calculateTicketPrice({ age: '', type: 'Regular', esJubilado: false })
-      }]);    } else if (!increment && newCount < tickets.length) {
+      }]);
+    } else if (!increment && newCount < tickets.length) {
       setTickets(tickets.slice(0, -1));
     }
   };
@@ -117,6 +118,17 @@ export default function BookingForm() {
       return;
     }
 
+    const now = new Date();
+
+    const isSameDay = date.toDateString() === now.toDateString();
+    const closingHour = 23;
+    const lastHourToBuy = closingHour - 1;
+
+    if (isSameDay && now.getHours() >= lastHourToBuy) {
+      alert('Las reservas para hoy ya no están disponibles. Por favor seleccioná otra fecha.');
+      return;
+    }
+
     const allAgesEntered = tickets.every(ticket => ticket.age !== '');
     if (!allAgesEntered) {
       alert('Por favor, completa todas las edades de las entradas.');
@@ -127,19 +139,20 @@ export default function BookingForm() {
   };
 
 
+
   return (
     <Background>
       <ScrollView style={styles.scrollView}>
-        <Text style={styles.title}>Reserva de Entradas</Text>
+        <Text style={styles.title} className='font-montserrat'>Reserva de Entradas</Text>
 
         {/* Selector de Fecha */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Fecha de Visita</Text>
+          <Text style={styles.sectionTitle} className='font-montserrat'>Fecha de Visita</Text>
           <TouchableOpacity
             style={styles.dateButton}
             onPress={() => setShowDatePicker(true)}
           >
-            <Text style={styles.dateButtonText}>
+            <Text style={styles.dateButtonText} className='font-montserrat'>
               {date.toLocaleDateString()}
             </Text>
             <MaterialIcons name="date-range" size={24} color={colors.dark} />
@@ -158,7 +171,7 @@ export default function BookingForm() {
 
         {/* Selector de Cantidad de Entradas */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Cantidad de Entradas</Text>
+          <Text style={styles.sectionTitle} className='font-montserrat'>Cantidad de Entradas</Text>
           <View style={styles.counterContainer}>
             <TouchableOpacity
               style={styles.counterButton}
@@ -166,7 +179,7 @@ export default function BookingForm() {
             >
               <MaterialIcons name="remove" size={24} color="white" />
             </TouchableOpacity>
-            <Text style={styles.counterText}>{ticketCount}</Text>
+            <Text style={styles.counterText} className='font-montserrat'>{ticketCount}</Text>
             <TouchableOpacity
               style={styles.counterButton}
               onPress={() => updateTicketCount(true)}
@@ -178,9 +191,9 @@ export default function BookingForm() {
 
         {/* Detalles de cada entrada */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Detalles de Entradas</Text>
+          <Text style={styles.sectionTitle} className='font-montserrat'>Detalles de Entradas</Text>
           {tickets.map((ticket, index) => (<View key={index} style={styles.ticketDetail}>
-            <Text style={styles.ticketNumber}>Entrada {index + 1}</Text>
+            <Text style={styles.ticketNumber} className='font-montserrat'>Entrada {index + 1}</Text>
             <View style={styles.ticketContent}>
               <View style={styles.ticketInputRow}>
                 <TextInput
@@ -188,6 +201,7 @@ export default function BookingForm() {
                     styles.ageInput,
                     ticket.esJubilado && styles.disabledInput
                   ]}
+                  className='font-montserrat'
                   placeholder="Edad"
                   placeholderTextColor="#999"
                   keyboardType="numeric"
@@ -202,7 +216,7 @@ export default function BookingForm() {
                   ]}
                   onPress={() => toggleTicketType(index)}
                 >
-                  <Text style={styles.typeButtonText}>{ticket.type}</Text>
+                  <Text style={styles.typeButtonText} className='font-montserrat'>{ticket.type}</Text>
                 </TouchableOpacity>
               </View>
 
@@ -218,10 +232,10 @@ export default function BookingForm() {
                     <MaterialIcons name="check" size={16} color="white" />
                   )}
                 </View>
-                <Text style={styles.checkboxLabel}>Soy jubilado</Text>
+                <Text style={styles.checkboxLabel} className='font-montserrat'>Soy jubilado</Text>
               </TouchableOpacity>
 
-              <Text style={styles.priceText}>
+              <Text style={styles.priceText} className='font-montserratbold'>
                 Precio: ${calculateTicketPrice(ticket).toLocaleString()}
               </Text>
             </View>
@@ -229,16 +243,16 @@ export default function BookingForm() {
           ))}
         </View>
         <View style={styles.totalSection}>
-          <Text style={styles.totalText}>Total: ${total.toLocaleString()}</Text>
+          <Text style={styles.totalText} className='font-montserratbold'>Total: ${total.toLocaleString()}</Text>
           <TouchableOpacity
             style={styles.submitButton}
             onPress={handleSubmit}
           >
-            <Text style={styles.submitButtonText}>Continuar</Text>
+            <Text style={styles.submitButtonText} className='font-montserratbold'>Continuar</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
-      </Background>
+    </Background>
 
   );
 }

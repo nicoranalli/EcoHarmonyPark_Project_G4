@@ -48,7 +48,7 @@ export default function LoginScreen() {
   };
   return (
 
-    <SafeAreaView style={{ backgroundColor: 'F6F1E8' }} className='flex-1 '>
+    <SafeAreaView style={{ backgroundColor: 'F6F1E8' }} className='flex-1  '>
 
       <Image
         source={require('../assets/images/logo-Photoroom.png')}
@@ -61,20 +61,20 @@ export default function LoginScreen() {
       <View className="p-6 grow shrink basis-0  ">
 
         <View>
-          <Text className='font-bold  text-4xl text-center'>Bienvenido</Text>
-          <Text className='text-center text-gray-500 text-2xl'>a EcoHarmonyApp!</Text>
+          <Text className='font-montserrat font-bold  text-4xl text-center'>Bienvenido</Text>
+          <Text className=' font-montserrat text-center text-gray-500 text-2xl'>a EcoHarmonyApp!</Text>
         </View>
 
 
         <View>
           <View>
-            <Text className='font-semibold text-2xl '>Email</Text>
+            <Text className='font-montserrat font-semibold text-2xl '>Email</Text>
             <TextInput
               autoCapitalize="none"
               autoCorrect={false}
               clearButtonMode="while-editing"
               keyboardType="email-address"
-              className='border-2 h-12 border-gray-300 rounded-lg p-2 mt-2'
+              className='font-montserrat border-2 h-12 border-gray-300 rounded-lg p-2 mt-2'
               placeholder='correo@gmail.com.ar'
               placeholderTextColor="#6b7280"
               value={form.email}
@@ -84,13 +84,13 @@ export default function LoginScreen() {
           </View>
 
           <View>
-            <Text className='font-semibold text-2xl mt-5 '>Contraseña</Text>
+            <Text className='font-montserrat font-semibold text-2xl mt-5 '>Contraseña</Text>
             <TextInput
               autoCapitalize="none"
               autoCorrect={false}
               clearButtonMode="while-editing"
               keyboardType="email-address"
-              className='border-2 h-12 border-gray-300 rounded-lg p-2 mt-2'
+              className='font-montserrat border-2 h-12 border-gray-300 rounded-lg p-2 mt-2'
               placeholder='********'
               placeholderTextColor="#6b7280"
               value={form.password}
@@ -105,18 +105,18 @@ export default function LoginScreen() {
             <TouchableOpacity
               onPress={handleLogin}
               className='bg-lime-600 rounded-lg p-4 mt-4'>
-              <Text className='font-bold text-center text-stone-100 '>Ingresar</Text>
+              <Text className='font-montserrat font-bold text-center text-stone-100 '>Ingresar</Text>
             </TouchableOpacity>
           </View>
 
 
           <View className='flex-row justify-center'>
-            <Text className='text-gray-500'>¿No tienes cuenta?</Text>
+            <Text className=' font-montserrat text-gray-500'>¿No tienes cuenta?</Text>
             <TouchableOpacity
               onPress={() => {
                 // handle onPress
               }}>
-              <Text className='font-semibold text-lime-600'> Registrate</Text>
+              <Text className='font-semibold text-lime-600 font-montserrat'> Registrate</Text>
             </TouchableOpacity>
           </View>
         </View>

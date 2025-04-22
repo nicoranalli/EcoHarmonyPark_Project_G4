@@ -71,7 +71,7 @@ export const createTicket = async (req: Request, res: Response) => {
         <p>Deberas asistir a boletería el dia elegido, y retirar tus entradas pagando en efectivo</p>
         <p><strong>El total a pagar es: $${total}</strong></p>
         <p>TE ESPERAMOS!!</p>
-        <p>El siguiente código QR te habilita a ingresar al parque el día elegiod</p>
+        <p>Escaneá el codigo QR para mas información!</p>
        <img src="cid:qrimage" />
        <p> Código de operación: ${operationId}</p>
       `

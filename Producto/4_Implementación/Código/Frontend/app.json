@@ -12,12 +12,15 @@
       {
         "asset": "./assets/fonts/Montserrat-Regular.ttf",
         "name": "MyFontRegular"
-      }],
+      }
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.tuempresa.ecoharmony",
       "infoPlist": {
-        "LSApplicationQueriesSchemes": ["ecoharmony"]
+        "LSApplicationQueriesSchemes": [
+          "ecoharmony"
+        ]
       }
     },
     "android": {
@@ -35,7 +38,12 @@
               "host": "payment"
             }
           ],
-          "category": ["BROWSABLE", "DEFAULT"]}]
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -52,7 +60,8 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true

@@ -16,10 +16,14 @@ export default function PaymentMethodFormScreen() {
 
   const { tickets, date, total } = useTicket();
 
-  const [method, setMethod] = useState('efectivo');
+  const [method, setMethod] = useState(null);
 
   const ticketCount = tickets.length;
   const handlePressConfirm = () => {
+    if (!method) {
+      alert('Por favor selecciona un metodo de pago');
+      return;
+    }
     if (method == 'efectivo') {
       router.replace(`./paymentResult?method=cash&ticketCount=${ticketCount}`);
     }
@@ -43,7 +47,7 @@ export default function PaymentMethodFormScreen() {
       <ScrollView showsVerticalScrollIndicator >
         <View className="p-6 grow shrink basis-0  ">
 
-          <Text className="text-3xl font-bold text-center mb-4">
+          <Text className="text-3xl font-bold text-center mb-4 font-montserratbold">
             Selecciona el metodo de pago
           </Text>
 
@@ -73,16 +77,16 @@ export default function PaymentMethodFormScreen() {
             renderItem={renderItem}
           />
 
-          <Text className="text-gray-500 text-center mt-2">Total a pagar: <Text className="text-primary font-bold">${total}</Text></Text>
-          <Text className="text-gray-500 text-center mt-2">Cantidad de entradas: <Text className="text-primary font-bold">{ticketCount}</Text></Text>
-          <Text className="text-gray-500 text-center mt-2">Fecha de visita: <Text className="text-primary font-bold">{date.toLocaleDateString()}</Text></Text>
+          <Text className="text-gray-500 text-center mt-2 font-montserrat">Total a pagar: <Text className="text-primary font-bold">${total}</Text></Text>
+          <Text className="text-gray-500 text-center mt-2 font-montserrat">Cantidad de entradas: <Text className="text-primary font-bold">{ticketCount}</Text></Text>
+          <Text className="text-gray-500 text-center mt-2 font-montserrat">Fecha de visita: <Text className="text-primary font-bold">{date.toLocaleDateString()}</Text></Text>
 
     </View>
           
           <TouchableOpacity
             onPress={handlePressConfirm}
             className="bg-primary p-5 rounded-2xl items-center shadow-md">
-            <Text className='text-white font-bold text-2xl '>Confirmar compra</Text>
+            <Text className='text-white font-bold text-2xl font-montserratbold'>Confirmar compra</Text>
 
           </TouchableOpacity>
 

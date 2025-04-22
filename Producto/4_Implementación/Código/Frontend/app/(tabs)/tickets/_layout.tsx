@@ -36,7 +36,7 @@ export default function TicketsLayout() {
     <Stack
       screenOptions={{
         headerShown: true,
-        headerTitleStyle: { fontFamily: 'Poppins_600SemiBold' },
+        headerTitleStyle: { fontFamily: 'Montserrat' },
         headerTintColor: '#31572C',
         headerLeft: () => <CustomBackButton /> // Mismo botón para todos
       }}

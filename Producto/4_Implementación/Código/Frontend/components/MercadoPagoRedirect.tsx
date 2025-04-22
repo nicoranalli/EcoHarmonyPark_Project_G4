@@ -14,20 +14,20 @@ export default function MercadoPagoRedirectScreen({onContinuar}: MercadoPagoRedi
                     <MaterialCommunityIcons name="handshake" size={40} color="#009EE3" />
                 </View>
 
-                <Text style={styles.title}>
+                <Text style={styles.title} className='font-montserrat'>
                     Seras redirigido a Mercado Pago
                 </Text>
 
-                <Text style={styles.description}>
+                <Text style={styles.description } className='font-montserrat'>
                     Pago para completar el{'\n'}pago con tarjeta de crédito
                 </Text>
 
                 <TouchableOpacity style={styles.button} onPress={() => { router.back() }}>
-                    <Text style={styles.buttonText}>Cancelar</Text>
+                    <Text style={styles.buttonText} className='font-montserrat'>Cancelar</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.buttonC} className='mt-4' onPress={() => { onContinuar() }}>
-                    <Text style={styles.buttonTextC}>Continuar</Text>
+                    <Text style={styles.buttonTextC} className='font-montserrat' >Continuar</Text>
                 </TouchableOpacity>
 
             </View>

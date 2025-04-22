@@ -18,7 +18,7 @@ export default function ProfileScreen() {
                         <TouchableOpacity
                             onPress={handleLogout}
                         >
-                            <Text className="text-xl font-bold">Cerrar sesion</Text>
+                            <Text className="font-montserrat text-xl font-bold">Cerrar sesion</Text>
                         </TouchableOpacity>
 
                     </View>

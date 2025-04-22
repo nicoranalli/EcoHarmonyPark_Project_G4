@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ticket } from "@/context/ticketContext";
-const API_URL = 'http://172.20.10.9:4000/' 
+const API_URL = 'http://192.168.0.237:4000/' 
 
 
 export const saveTickets = async (tickets: Ticket[], date: Date, total: number, paymentMethod: string) => {
