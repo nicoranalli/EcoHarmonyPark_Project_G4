@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import QRCode from 'qrcode';
 import nodemailer from 'nodemailer';
 
+const BACK_URL = 'http://192.168.0.237:4000/' 
 const ticketsList = tickets;
 
 export const createTicket = async (req: Request, res: Response) => {
@@ -28,7 +29,7 @@ export const createTicket = async (req: Request, res: Response) => {
     }));
 
     const operationId = uuidv4().slice(0, 8)
-    const qrData = `http://192.168.100.79:4000/tickets/verify-ticket/${operationId}`;
+    const qrData = `${BACK_URL}tickets/verify-ticket/${operationId}`;
     const qrCode = await QRCode.toDataURL(qrData);
 
     const user = users.find((u) => u.id === userId);
@@ -68,25 +69,28 @@ export const createTicket = async (req: Request, res: Response) => {
         <h3>¡Gracias por tu reserva!, ${user.name}!</h3>
         <p>Has reservado ${generatedTickets.length} entradas para el día <strong>${new Date(date).toLocaleDateString()}</strong>.</p>
         <p>Deberas asistir a boletería el dia elegido, y retirar tus entradas pagando en efectivo</p>
-        <p>El total a pagar es: $${total}</p>
+        <p><strong>El total a pagar es: $${total}</strong></p>
         <p>TE ESPERAMOS!!</p>
-       <p> Código de operación: ${operationId}</p>
-       <p> Método de pago: Efectivo</p>
-      `
-    }else {
-     htmlPreview =  `
-        <h3>¡Gracias por tu compra, ${user.name}!</h3>
-        <p>Has comprado ${generatedTickets.length} entradas para el día <strong>${new Date(date).toLocaleDateString()}</strong>.</p>
         <p>El siguiente código QR te habilita a ingresar al parque el día elegiod</p>
        <img src="cid:qrimage" />
        <p> Código de operación: ${operationId}</p>
       `
+
+    }else {
+     htmlPreview =  `
+        <h3>¡Gracias por tu compra, ${user.name}!</h3>
+        <p>Has comprado ${generatedTickets.length} entradas para el día <strong>${new Date(date).toLocaleDateString()}</strong>.</p>
+        <p>El siguiente código QR te habilita a ingresar al parque el día elegido</p>
+       <img src="cid:qrimage" />
+       <p> Código de operación: ${operationId}</p>
+      `
+
     }
 
     await transporter.sendMail({
       from: '"EcoHarmony Park" <noreply@parque.com>',
       to: 'nicoranalli9@gmail.com',
-      subject: 'Compra de entradas confirmada',
+      subject: 'Compra/Reserva de entradas confirmada',
       html: htmlPreview,
       attachments: [
         {

@@ -33,7 +33,7 @@ export default function TicketsScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => router.push('/(tabs)/tickets/ticketsHistory')}
+            onPress={() => router.push('./tickets/ticketsHistory')}
             className="bg-primary p-5 rounded-2xl items-center shadow-md mt-8">
 
             <MaterialCommunityIcons name="ticket-account" size={32} color="white" />

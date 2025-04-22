@@ -13,7 +13,7 @@ export default function PaymentResultScreen() {
   const params = useLocalSearchParams();
   const method = params.method as string;
 
-  const { tickets, date, total } = useTicket();
+  const { tickets, date, total, reset } = useTicket();
 
   const showToast = () => {
     Toast.show({
@@ -30,6 +30,7 @@ export default function PaymentResultScreen() {
    setTimeout(() => {
     showToast();
    }, 2000);
+
   }
   , [tickets, date, total]);
 
@@ -46,8 +47,8 @@ export default function PaymentResultScreen() {
             <Text className='text-gray-600 text-center mt-2'>Recibirás un correo con los {'\n'}detalles de la compra
               y el QR para ingresar al parque.</Text>
           <TouchableOpacity
-            onPress={()=>{router.replace('./ticketsHistory')} }
-            >
+            onPress={() => { router.replace('../tickets/ticketsHistory') }}
+>
             <Text className='text-lime-600 font-bold text-lg mt-4'>Ver tus entradas</Text>
           </TouchableOpacity>
           </>
@@ -59,8 +60,8 @@ export default function PaymentResultScreen() {
             <Text className='text-gray-600 text-center mt-2'>Recibirás un correo con los {'\n'}detalles de la reserva
               y el paso a paso del pago en boleteria.</Text>
           <TouchableOpacity
-            onPress={()=>{router.push('/(tabs)/tickets/ticketsHistory')}} 
-          >
+            onPress={() => { router.replace('../tickets/ticketsHistory') }}
+            >
             <Text className='text-lime-600 font-bold text-lg mt-4'>Ver tus entradas</Text>
           </TouchableOpacity>
           </>

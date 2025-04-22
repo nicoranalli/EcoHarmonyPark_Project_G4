@@ -21,10 +21,10 @@ export default function PaymentMethodFormScreen() {
   const ticketCount = tickets.length;
   const handlePressConfirm = () => {
     if (method == 'efectivo') {
-      router.push(`/(tabs)/tickets/paymentResult?method=cash&ticketCount=${ticketCount}`);
+      router.replace(`./paymentResult?method=cash&ticketCount=${ticketCount}`);
     }
     else {
-      router.push(`/(tabs)/tickets/checkout?amount=${total}`);
+      router.replace(`./checkout?amount=${total}`);
     }
   }
 

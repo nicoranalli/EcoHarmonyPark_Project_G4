@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -11,7 +11,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import colors from '@/constants/colors';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useTicket } from '../../../context/ticketContext';
-import { router, useFocusEffect } from 'expo-router';
+import { router } from 'expo-router';
 import Background from '@/components/BackgroundScreen';
 
 export default function BookingForm() {
@@ -22,7 +22,7 @@ export default function BookingForm() {
   const [ticketCount, setTicketCount] = useState(1);
 
   useEffect(() => {
-    if (tickets.length === 0 && ticketCount > 0) {
+    if (ticketCount > 0) {
       setTickets([
         {
           age: '',
@@ -52,6 +52,15 @@ export default function BookingForm() {
   const handleDateChange = (event: any, selectedDate?: Date) => {
     setShowDatePicker(false);
     if (selectedDate) {
+      // Verificar si el día es martes (1) o jueves (3)
+      // Los días en JS: 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
+      const dayOfWeek = selectedDate.getDay();
+      
+      if (dayOfWeek === 2 || dayOfWeek === 4) { // Martes (2) o Jueves (4)
+        alert('No se permiten reservas los días martes y jueves');
+        return;
+      }
+      
       setDate(selectedDate);
     }
   };
@@ -103,13 +112,18 @@ export default function BookingForm() {
 
   const handleSubmit = () => {
     // Validar que todas las edades estén ingresadas
+    if (date.getDay() === 2 || date.getDay() === 4) {
+      alert('No se permiten reservas los días martes y jueves');
+      return;
+    }
+
     const allAgesEntered = tickets.every(ticket => ticket.age !== '');
     if (!allAgesEntered) {
       alert('Por favor, completa todas las edades de las entradas.');
       return;
     }
 
-    router.push('/(tabs)/tickets/paymentMethod')
+    router.push('./paymentMethod')
   };
 
 
@@ -134,7 +148,9 @@ export default function BookingForm() {
             <DateTimePicker
               value={date}
               mode="date"
+              display='default'
               minimumDate={new Date()}
+              maximumDate={new Date(new Date().setMonth(new Date().getMonth() + 6))}
               onChange={handleDateChange}
             />
           )}

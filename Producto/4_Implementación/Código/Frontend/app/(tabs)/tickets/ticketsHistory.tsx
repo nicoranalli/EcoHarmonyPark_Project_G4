@@ -120,7 +120,7 @@ export default function TicketsHistoryScreen() {
               <View style={styles.cardFooter}>
                 <TouchableOpacity
                   onPress={() => {
-                    router.push(`./tickets/ticketDetail/${operation.idOperation}`);
+                    router.push(`./ticketDetail?idOperation=${operation.idOperation}`);
                   }}
                 >
                   <Text style={styles.viewDetails} className="text-2xl text-primary font-bold">

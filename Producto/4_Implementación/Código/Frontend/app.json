@@ -8,6 +8,11 @@
     "scheme": "ecoharmony",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "fonts": [
+      {
+        "asset": "./assets/fonts/Montserrat-Regular.ttf",
+        "name": "MyFontRegular"
+      }],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.tuempresa.ecoharmony",

@@ -18,7 +18,7 @@ export default function CheckoutScreen() {
     try {
       await createPreference(+amount); // Cambia 100 por el monto real que necesites
     } catch (error) {
-      router.push('/(tabs)/tickets/paymentResult');
+      router.push('./(tabs)/tickets/paymentResult');
     }
 
   }
@@ -37,7 +37,7 @@ export default function CheckoutScreen() {
 
   useEffect(() => {
     if (!loading) {
-      router.push('/(tabs)/tickets/paymentResult?method=card');
+      router.replace('./paymentResult?method=card');
     }
   }, [loading])
 
