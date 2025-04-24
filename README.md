@@ -1,6 +1,10 @@
 # 🏞️EcoHarmonyPark_Project_G4🌳
 Repositorio dedicado a gestionar el ciclo de vida del producto de software para el bioparque "EcoHarmony Park".
 
+<p align="center">
+  <img src="Producto/4_Implementación/Código/Frontend/assets/images/logo.png" alt="Logo EcoHarmony Park App" width="600"/>
+</p>
+
 ## 🔆Integrantes del equipo🔆
 | Integrante                     | Legajo |
 |--------------------------------|--------|
