@@ -66,6 +66,12 @@ export default function BookingForm() {
   };
 
   const updateTicketCount = (increment: boolean) => {
+
+
+    if (increment && ticketCount >= 10) {
+      alert('No se pueden reservar más de 10 entradas');
+    }
+
     const newCount = increment
       ? Math.min(ticketCount + 1, 10)
       : Math.max(ticketCount - 1, 1);
@@ -205,9 +211,19 @@ export default function BookingForm() {
                   placeholder="Edad"
                   placeholderTextColor="#999"
                   keyboardType="numeric"
+                  maxLength={3}
+
                   value={ticket.age}
-                  onChangeText={(text) => updateTicketAge(index, text)}
-                  editable={!ticket.esJubilado}
+                  onChangeText={(text) => {
+                    // Solo permitir números enteros mayores a 0, sin decimales
+                    const filtered = text.replace(/[^0-9]/g, ''); // Solo números
+                    // Evitar que empiece con 0 o sea vacío
+                    if (filtered === '' || filtered === '0') {
+                      updateTicketAge(index, '');
+                    } else {
+                      updateTicketAge(index, String(parseInt(filtered, 10)));
+                    }
+                  }} editable={!ticket.esJubilado}
                 />
                 <TouchableOpacity
                   style={[

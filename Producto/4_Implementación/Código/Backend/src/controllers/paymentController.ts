@@ -51,7 +51,6 @@ try {
      return
 
   } catch (error) {
-    console.error('Error creating preference:', error);
      res.status(500).json({ error: 'Failed to create payment preference' });
      return
   }

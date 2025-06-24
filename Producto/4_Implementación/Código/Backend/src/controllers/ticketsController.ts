@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import QRCode from 'qrcode';
 import nodemailer from 'nodemailer';
 
-const BACK_URL = 'http://192.168.0.237:4000/' 
+const BACK_URL = 'http://192.168.0.139:4000/' 
 const ticketsList = tickets;
 
 export const createTicket = async (req: Request, res: Response) => {
@@ -63,7 +63,6 @@ export const createTicket = async (req: Request, res: Response) => {
     });
 
     var htmlPreview = ''
-    console.log(method)
     if (method === 'cash'){
        htmlPreview = `
         <h3>¡Gracias por tu reserva!, ${user.name}!</h3>
@@ -73,7 +72,7 @@ export const createTicket = async (req: Request, res: Response) => {
         <p>TE ESPERAMOS!!</p>
         <p>Escaneá el codigo QR para mas información!</p>
        <img src="cid:qrimage" />
-       <p> Código de operación: ${operationId}</p>
+       <p> Código de reserva: ${operationId}</p>
       `
 
     }else {
@@ -82,7 +81,7 @@ export const createTicket = async (req: Request, res: Response) => {
         <p>Has comprado ${generatedTickets.length} entradas para el día <strong>${new Date(date).toLocaleDateString()}</strong>.</p>
         <p>El siguiente código QR te habilita a ingresar al parque el día elegido</p>
        <img src="cid:qrimage" />
-       <p> Código de operación: ${operationId}</p>
+       <p> Código de reserva: ${operationId}</p>
       `
 
     }
